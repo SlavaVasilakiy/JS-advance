@@ -12,7 +12,7 @@
 		<br />
 
 		<button class="messageBtn">Показать блок</button>
-		<div class="message">Привет :)</div>
+		<div class="message" style="visibility: hidden">Привет :)</div>
 
 		<br />
 
@@ -41,13 +41,56 @@
 
 			// 1. При изменении значения в input с id="from", значение содержащееся в нем должно моментально отображаться в span. То есть при печати в input'е тег span также должен меняться.
 
+			const inputEl = document.querySelector("#from");
+			const spanEl = document.querySelector("span");
+
+			inputEl.addEventListener("input", function () {
+				spanEl.textContent = inputEl.value;
+			});
+
 			// 2. При клике на кнопку с классом messageBtn необходимо элементу с классом message:
 			// - добавить два класса: animate_animated и animate_fadeInLeftBig
 			// - поставить данному элементу стиль visibility в значение 'visible'.
 
+			const btnMessage = document.querySelector(".messageBtn");
+			const messageEl = document.querySelector(".message");
+
+			btnMessage.addEventListener("click", function () {
+				messageEl.classList.add(
+					"animate_animated",
+					"animate_fadeInLeftBig",
+				);
+				messageEl.style.visibility = "visible";
+			});
+
 			// 3. Необходимо при отправке формы проверить, заполнены ли все поля в этой форме. Если какое-либо поле не заполнено, форма не должна отправляться, также должны быть подсвечены незаполненные поля (необходимо поставить класс error незаполненным полям). Как только пользователь начинает заполнять какое-либо поле, необходимо, при вводе в данное поле, произвести проверку:
 			// - Если поле пустое, необходимо данное поле подсветить (поставить класс error данному полю).
 			// - Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
+
+			const formEl = document.querySelector("form");
+			const inputFields = formEl.querySelectorAll(".form-control");
+
+			// Добавляем обработчик события "submit" на форму для проверки заполненности полей при отправке.
+			formEl.addEventListener("submit", function (e) {
+				//При отправке формы проверям все поля на наличие пустых значений и устанавливаем класс "error" на пустых полях и красную рамку.
+				inputFields.forEach(function (input) {
+					if (input.value.trim() === "") {
+						e.preventDefault();
+						input.classList.add("error");
+						input.style.border = "3px solid red";
+					}
+				});
+			});
+
+			// Добавляем обработчик ввода для полей, который убирает класс "error" и красную рамку при вводе данных в поле.
+			inputFields.forEach(function (input) {
+				input.addEventListener("input", function () {
+					if (input.value.trim() !== "") {
+						input.classList.remove("error");
+						input.style.border = "";
+					}
+				});
+			});
 		</script>
 	</body>
 </html>
