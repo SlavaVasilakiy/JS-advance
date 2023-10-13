@@ -33,7 +33,7 @@ getDataFromFile(cadrsData)
       </a>
         `;
 
-        cardEl.insertAdjacentHTML("beforeend", cardHtml);
+      cardEl.insertAdjacentHTML("beforeend", cardHtml);
     });
   })
   .catch((error) => {
