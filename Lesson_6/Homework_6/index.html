@@ -1,21 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      //         Дан макет сайта https://www.figma.com/file/mnLY69cYE5cqWM5w6n5hXx/Seo-%26-Digital-Marketing-Landing-Page?node-id=190%3A1194&t=q4NMnXTnwyyTSGA6-0
 
-      // В блоке Featured Items небходимо реализовать шаблон товаров.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+    rel="stylesheet" />
+</head>
 
-      // Для этого необходимо создать json формат данных по всем товарам.
+<body style=" margin: 0; padding: 0; font-family: Lato;">
+  <div class="futered-items center"
+    style="box-sizing: border-box; margin: 0 auto; max-width: 1600px; display: flex; flex-direction: column; align-items: center;">
 
-      // Из этого файла сформировать блок Featured Items.
+    <div class="futered-items__heading"
+      style="display: flex; flex-direction: column; text-align: center; padding-bottom: 48px;">
+      <h3 class="futered-items__h3"
+        style="color: #222; font-size: 30px; font-weight: 400;">Featured Items
+      </h3>
+      <span class="featured-items__text"
+        style="color: #9F9F9F; font-size: 14px; font-weight: 400;">Shop for
+        items based on what we
+        featured in this week</span>
+    </div>
 
-      // Всю вёрстку остальных частей реализовывать не нужно, если у вас она была сделана на html/css можно использовать, заново создавать не требуется.
-    </script>
-  </body>
+    <div class="item-box-container"
+      style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 30px; justify-content: center; max-width: 1440px; margin: 0  auto; margin-bottom: 64px;">
+    </div>
+
+    <a class="browseAllProduct" href="#"
+      style="text-decoration: none; border: 1px solid #FF6A6A; padding: 15px 39px; color: #F26376; font-size: 16px; font-weight: 400; margin-bottom: 95px;"><span>Browse
+        All Products</span></a>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    //         Дан макет сайта https://www.figma.com/file/mnLY69cYE5cqWM5w6n5hXx/Seo-%26-Digital-Marketing-Landing-Page?node-id=190%3A1194&t=q4NMnXTnwyyTSGA6-0
+
+    // В блоке Featured Items небходимо реализовать шаблон товаров.
+
+    // Для этого необходимо создать json формат данных по всем товарам.
+
+    // Из этого файла сформировать блок Featured Items.
+
+    // Всю вёрстку остальных частей реализовывать не нужно, если у вас она была сделана на html/css можно использовать, заново создавать не требуется.
+  </script>
+</body>
+
 </html>
