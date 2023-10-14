@@ -14,11 +14,11 @@ async function getDataFromFile(filePath) {
 const cadrsData = "cards.json";
 const cardEl = document.querySelector(".item-box-container");
 
-getDataFromFile(cadrsData)
-  .then((data) => {
+getDataFromFile(cadrsData).then((data) => {
+  if (cardEl) {
     data.forEach((card) => {
       const cardHtml = `
-          <a href="#" class="item-box"
+      <a href="#" class="item-box"
         style="display: flex; flex-direction: column; max-width: 360px; background-color: #F8F8F8; text-decoration: none;">
         <img src="${card.photoSrc}" alt="card photo" class="item-img">
         <div class="item-text"
@@ -31,11 +31,10 @@ getDataFromFile(cadrsData)
             style="color: #F16D7F; padding-bottom: 20px; font-size: 16px; font-weight: 400;">$${card.cardPrice}.00</span>
         </div>
       </a>
-        `;
-
+      `;
       cardEl.insertAdjacentHTML("beforeend", cardHtml);
     });
-  })
-  .catch((error) => {
-    console.error("Произошла ошибка:", error);
-  });
+  } else {
+    console.log("Элемент .item-box-container не найден.");
+  }
+});
