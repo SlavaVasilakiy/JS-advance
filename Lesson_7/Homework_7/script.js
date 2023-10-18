@@ -21,25 +21,24 @@ getDataFromFile(cardsData)
     if (cardContainer) {
       data.forEach((card) => {
         const cardHtml = `
-      <div class="card-box">
-        <div class="card-img-container">
-          <img src="${card.photoSrc}" alt="${card.cardTitle}" class="card-img">
-          <button class="add-to-cart-button">Add to Cart</button>
+        <div class="card-box">
+          <div class="card-img-container">
+            <img src="${card.photoSrc}" alt="${card.cardTitle}" class="card-img">
+            <button type="button" class="add-to-cart-button">Add to Cart</button>
+          </div>
+          <div class="card-text">
+            <span class="card-title">${card.cardTitle}</span>
+            <span class="card-description">${card.cardDescription}</span>
+            <span class="card-price">$${card.cardPrice}.00</span>
+          </div>
         </div>
-        <div class="card-text">
-          <span class="card-title">${card.cardTitle}</span>
-          <span class="card-description">${card.cardDescription}</span>
-          <span class="card-price">$${card.cardPrice}.00</span>
-        </div>
-      </div>
-      `;
+        `;
         cardContainer.insertAdjacentHTML("beforeend", cardHtml);
       });
     } else {
       console.log("Элемент .card-box-container не найден.");
     }
   })
-  .then();
 
 // Урок 13. Семинар. Работа с медиа
 // Дан макет сайта https://www.figma.com/file/mnLY69cYE5cqWM5w6n5hXx/Seo-%26-Digital-Marketing-Landing-Page?node-id=4203%3A2&t=q4NMnXTnwyyTSGA6-0

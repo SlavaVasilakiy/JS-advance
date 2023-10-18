@@ -74,12 +74,12 @@ body {
   transition: transform 1s;
 }
 
-/* .card-box:hover .card-img {
+.card-box:hover .card-img {
   filter: brightness(0.4);
   transition: 1.5s;
-} */
+}
 
-/* .add-to-cart-button {
+.add-to-cart-button {
   position: absolute;
   top: 50%; 
   left: 50%;
@@ -97,7 +97,7 @@ body {
 
 .card-box:hover .add-to-cart-button {
   opacity: 1.2; 
-} */
+}
 
 .card-text {
   display: flex;
