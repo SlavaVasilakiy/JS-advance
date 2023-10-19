@@ -1,4 +1,5 @@
-const futeredItemsElement = document.querySelector(".featured-items");
+"use strict";
+
 const itemContainerElement = document.querySelector(".item-container");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -34,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
         `;
-      
+
       // Добавление товаров
       if (itemContainerElement) {
         itemContainerElement.appendChild(cartItem);
       }
-      
+
       const btnClose = cartItem.querySelector(".item-btn");
 
       // Удаление товаров
@@ -53,4 +54,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
