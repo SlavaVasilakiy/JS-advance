@@ -1,9 +1,16 @@
 "use strict";
 
-const itemContainerElement = document.querySelector(".item-container");
+// const cartItemsBox = document.createElement("div");
+// cartItemsBox.className = "cart-items";
+// cartItemsBox.innerHTML = `
+// 	<h3 class="cart-items-title">Cart Items</h3>
+// 			<div class="item-container">
+// 			</div>
+// `;
 
+const itemContainerElement = document.querySelector(".item-container");
 document.addEventListener("DOMContentLoaded", function () {
-  document.body.addEventListener("click", function (event) {
+	document.body.addEventListener("click", function (event) {
     const addToCartButton = event.target;
 
     if (addToCartButton && addToCartButton.closest(".add-to-cart-button")) {
@@ -41,16 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
         itemContainerElement.appendChild(cartItem);
       }
 
+      itemContainerElement.closest(".cart-items").style.display = "flex"; // КОСТЫЛИ !!!!!
       const btnClose = cartItem.querySelector(".item-btn");
 
       // Удаление товаров
       if (btnClose) {
-        btnClose.addEventListener("click", function (event) {
+        btnClose.addEventListener("click", function () {
           if (cartItem) {
             cartItem.remove();
+					}
+					// КОСТЫЛИ !!!!!
+          if (!document.querySelector(".item-box")) {
+            // КОСТЫЛИ !!!!!
+            itemContainerElement.closest(".cart-items").style.display = "none"; // КОСТЫЛИ !!!!!
           }
         });
       }
+      // if (itemContainer && !itemContainer.hasChildNodes) {
+      //   cartItemsBox.remove();
+      // }
     }
   });
 });
