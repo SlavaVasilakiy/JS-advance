@@ -1,23 +1,17 @@
 "use strict";
 
-// const cartItemsBox = document.createElement("div");
-// cartItemsBox.className = "cart-items";
-// cartItemsBox.innerHTML = `
-// 	<h3 class="cart-items-title">Cart Items</h3>
-// 			<div class="item-container">
-// 			</div>
-// `;
-
 const itemContainerElement = document.querySelector(".item-container");
-document.addEventListener("DOMContentLoaded", function () {
-	document.body.addEventListener("click", function (event) {
-    const addToCartButton = event.target;
 
-    if (addToCartButton && addToCartButton.closest(".add-to-cart-button")) {
-      const cartItem = document.createElement("div");
-      cartItem.className = "item-box";
+function addAndRemoveItems() {
+	document.addEventListener("DOMContentLoaded", function () {
+    document.body.addEventListener("click", function (event) {
+      const addToCartButton = event.target;
 
-      cartItem.innerHTML = `
+      if (addToCartButton && addToCartButton.closest(".add-to-cart-button")) {
+        const cartItem = document.createElement("div");
+        cartItem.className = "item-box";
+
+        cartItem.innerHTML = `
           <img class="item-img" src="img/item-img1.svg" alt="">
           <button class="item-btn" type="button" title="Delete"><i class="fa fa-close"></i></button>
           <div class="item-description">
@@ -43,30 +37,50 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         `;
 
-      // Добавление товаров
-      if (itemContainerElement) {
-        itemContainerElement.appendChild(cartItem);
-      }
-
-      itemContainerElement.closest(".cart-items").style.display = "flex"; // КОСТЫЛИ !!!!!
-      const btnClose = cartItem.querySelector(".item-btn");
-
-      // Удаление товаров
-      if (btnClose) {
-        btnClose.addEventListener("click", function () {
-          if (cartItem) {
-            cartItem.remove();
-					}
-					// КОСТЫЛИ !!!!!
-          if (!document.querySelector(".item-box")) {
-            // КОСТЫЛИ !!!!!
-            itemContainerElement.closest(".cart-items").style.display = "none"; // КОСТЫЛИ !!!!!
+        // Добавление товаров
+        if (itemContainerElement) {
+          itemContainerElement.appendChild(cartItem);
+          const cartItemsContainer =
+            itemContainerElement.closest(".cart-items");
+          if (cartItemsContainer) {
+            cartItemsContainer.style.display = "flex";
+          } else {
+            throw new Error(`Элемент .cart-items не найден!`);
           }
-        });
+        } else {
+          throw new Error(`Элемент .item-container не найден!`);
+        }
+
+        const btnClose = cartItem.querySelector(".item-btn");
+
+        // Удаление товаров
+        if (btnClose) {
+          btnClose.addEventListener("click", function () {
+            if (cartItem) {
+              cartItem.remove();
+            }
+
+            if (!document.querySelector(".item-box")) {
+              if (itemContainerElement) {
+                const cartItems = itemContainerElement.closest(".cart-items");
+                if (cartItems) {
+                  cartItems.style.display = "none";
+                } else {
+                  throw new Error(`Элемент .cart-items не найден!`);
+                }
+              } else {
+                throw new Error(`Элемент .item-container не найден!`);
+              }
+            }
+          });
+        }
       }
-      // if (itemContainer && !itemContainer.hasChildNodes) {
-      //   cartItemsBox.remove();
-      // }
-    }
+    });
   });
-});
+}
+
+try {
+	addAndRemoveItems()
+} catch (e) {
+	console.log(e.message);
+}
